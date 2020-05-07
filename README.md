@@ -9,32 +9,25 @@ import {
   useScene,
   usePerspectiveCamera,
   useOrthographicCamera,
-  scene,
-  group,
-  mesh,
-  boxBufferGeometry,
-  meshStandardMaterial,
-  css2DObject,
-  pointLight,
-  thirdView
+  ThirdView
 } from 'react-third'
 
 function PresudoThirdView (){
   const [ rotateXY, setRotateXY ] = useState()
 
-  const thirdScene = useScene((
-    <scene>
-      <group position={[0,0,0]} rotation={[...rotateXY,0]}>
-        <mesh onClick="handleClickMesh">
-          <boxBufferGeometry args={[1, 1, 1]} />
-          <meshStandardMaterial color={'orange'} />
-        </mesh>
-        <css2DObject>
+  const thirdScene = useScene((x)=>(
+    <x.scene>
+      <x.group position={[0,0,0]} rotation={[...rotateXY,0]}>
+        <x.mesh onClick="handleClickMesh">
+          <x.boxBufferGeometry args={[1, 1, 1]} />
+          <x.meshStandardMaterial color={'orange'} />
+        </x.mesh>
+        <x.css2DObject>
           <a onClick="handleClickButton">Hello</a>
-        </css2DObject>
-      </group>
-      <pointLight position={[10, 10, 10]} />
-    </scene>
+        </x.css2DObject>
+      </x.group>
+      <x.pointLight position={[10, 10, 10]} />
+    </x.scene>
   ))
 
   const camera1 = usePerspectiveCamera({fov: 75, near: 0.1, far: 1000, z: 5, lookAt: [0,0,0]})
@@ -57,8 +50,8 @@ function PresudoThirdView (){
   return (
     <div>
       <h1>Third example page</h1>
-      <thirdView scene={thirdScene} camera={camera1} style={width:100, height:100} />
-      <thirdView scene={thirdScene} camera={camera2} style={width:100, height:100} />
+      <ThirdView scene={thirdScene} camera={camera1} style={width:100, height:100} />
+      <ThirdView scene={thirdScene} camera={camera2} style={width:100, height:100} />
     </div>
   )
 }
