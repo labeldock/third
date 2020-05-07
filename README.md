@@ -2,7 +2,22 @@
 Thinking of how to express three js as vnode.
 
 ```js
-import { useScene, scene, group, mesh, boxBufferGeometry, meshStandardMaterial, css2DObject, pointLight, thirdView } from 'react-third'
+import React, {
+  useState
+} from 'react'
+import { 
+  useScene,
+  usePerspectiveCamera,
+  useOrthographicCamera,
+  scene,
+  group,
+  mesh,
+  boxBufferGeometry,
+  meshStandardMaterial,
+  css2DObject,
+  pointLight,
+  thirdView
+} from 'react-third'
 
 function PresudoThirdView (){
   const [ rotateXY, setRotateXY ] = useState()
